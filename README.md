@@ -1,16 +1,16 @@
 
-# Opswat to Deep Discovery Analyzer Integration
+# Opswat to Deep Discovery Analuyzer Integration Application
 
-**Opsalyzer provides integration Deep Discovery Analyzer as External Scanner with Opswat MetaDefender Core**
+**Opsalyzer provides ability to integrate Deep Discovery Analyzer as External Scanner to Opswat MetaDefender Core**
 
 ## Options
 
-Opsalyzer provides the following ways to provide options:
-1. Configuration file config. json. The application seeks for this file in its current folder
+Opsalyzer provides following ways to provide options:
+1. Configuration file config.json. Application seeks for this file in its current folder
 2. Environment variables
 3. Command line parameters
 
-The following options are available:
+Following options are available:
 
 | Type | JSON Option<br/>Command line<br/>Env Variable | Description | Default |
 | ---- | --------------------------------------------- | ----------- | ------- |
@@ -34,7 +34,8 @@ The following options are available:
 
 ## Return Codes
 
-If Opsalyzer successfully finishes sample analysis, it returns code 0 and the result is printed to Stdout. In case of error, non zero Return Code can be checked to diagnose a problem.
+If Opsalyzer successfuly finishes sample analysis it returnes code 0 and result is printed to Stdout. In case of
+error, non zero Return Code can be checked to diagnose a problem.
 
 | Return Code | Description |
 | ----------- | ----------- |
@@ -53,7 +54,7 @@ If Opsalyzer successfully finishes sample analysis, it returns code 0 and the re
 |12|Missing api key|
 |13|Api key format error|
 |14|Failed to upload sample|
-|15|Fail check dupicate sample|
+|15|Fail check duplicate sample|
 |16|Register failed|
 |17|Fail second check duplicate sample|
 |18|Sample not found|
@@ -68,18 +69,13 @@ For further diagnostics logging can be enabled.
 ## Logging
 
 Logging is controlled by log_level and log_file parameters.
-log_file specifies a file to write log message and log_level verbosity of the log file:
+log_file specifies file to write log message and log_level verbosity of the log file:
 
 - 0 - turn logging off
 - 1 - log only warnings
 - 2 - log general info messages also
 - 3 - enable debug logging
 
-**Warning:** log file is not limited in size anyhow, so after debugging, logging should be turned off.
+**Warning:** log file is not limited is size anyhow, so after debugging it should be turned off.
 
-## Prefilter Files
-
-Opsalyzer operations can be dramatically accelerated if [Periculosum](https://github.com/mpkondrashin/periculosum/) checker is used. This program provides the ability to check whenever particular file is supported by Analyzer to avoid unnecessary submissions.
-
-The latest version of Periculosum can be [downloaded from GitHub](https://github.com/mpkondrashin/periculosum/releases).
-Unpack contents of the downloaded archive to the same folder as Opsalyzer itself.
+## Opswat MetaDefender Core Configuration (TODO)
