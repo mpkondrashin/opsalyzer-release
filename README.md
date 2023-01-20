@@ -32,6 +32,7 @@ Following options are available:
 |Boolean|accept_timeout<br/>--accept_timeout<br/>OPSAL_ACCEPT_TIMEOUT|files that resulted timeout during analysis are trated as non malicious|false|
 |Duration|connection_timeout<br/>--connection_timeout<br/>OPSAL_CONNECTION_TIMEOUT|Connection timeout|15s|
 |String|version<br/>--version<br/>OPSAL_VERSION|Force Web Services API version|2.0|
+|String|config<br/>--config<br/>OPSAL_CONFIG|Configuration file path|none|
 
 
 ## Return Codes
@@ -62,8 +63,11 @@ error, non zero Return Code can be checked to diagnose a problem.
 |18|Sample not found|
 |19|Sample analysis error|
 |20|Sample analysis timeout|
-|21|Unexpected status returned|
-|22|Output marshal error|
+|21|Get brief report error|
+|22|Unexpected status returned|
+|23|Output marshal error|
+|24|Get opsalyzer path failed|
+|25|Config file missing|
 
 
 For further diagnostics logging can be enabled.
