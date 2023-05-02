@@ -1,5 +1,5 @@
 
-# Opswat to Deep Discovery Analuyzer Integration Application
+# Opswat to Deep Discovery Analyzer Integration Application
 
 **Opsalyzer provides ability to integrate Deep Discovery Analyzer as External Scanner to Opswat MetaDefender Core**
 
@@ -72,6 +72,7 @@ error, non zero Return Code can be checked to diagnose a problem.
 |25|Get opsalyzer path failed|
 |26|Config file missing|
 |27|Read file error|
+|28|Missing vision one domain|
 
 
 For further diagnostics logging can be enabled.
