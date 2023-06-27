@@ -16,7 +16,7 @@ Following options are available:
 | ---- | --------------------------------------------- | ----------- | ------- |
 |String|analyzer<br/>--analyzer<br/>OPSAL_ANALYZER|Analyzer address (only if Analyzer used)|none|
 |String|api_key<br/>--api_key<br/>OPSAL_API_KEY|Analyzer API key (only if Analyzer used)|none|
-|Integer|max_file_size<br/>--max_file_size<br/>OPSAL_MAX_FILE_SIZE|maximum file size|50MB|
+|String|max_file_size<br/>--max_file_size<br/>OPSAL_MAX_FILE_SIZE|maximum file size|50MB|
 |Boolean|ignore_tls_errors<br/>--ignore_tls_errors<br/>OPSAL_IGNORE_TLS_ERRORS|ignore TLS errors. (only if Analyzer used)|false|
 |Duration|timeout<br/>--timeout<br/>OPSAL_TIMEOUT|file analysis timeout|20m|
 |Boolean|only_cached<br/>--only_cached<br/>OPSAL_ONLY_CACHED|do not wait from analysis result. Only check Analyzer cache|false|
@@ -36,6 +36,37 @@ Following options are available:
 |String|version<br/>--version<br/>OPSAL_VERSION|Force Web Services API version|2.0|
 |String|config<br/>--config<br/>OPSAL_CONFIG|Configuration file path|none|
 
+
+## Configuration file sample
+
+Sample of configuration file:
+```json
+{
+    "analyzer": "1.2.3.4",
+    "api_key": "12341234-1234-1234-1234-213412341234",
+    "max_file_size": "25MB",
+    "ignore_tls_errors": true,
+    "timeout": "5m",
+    "only_cached": false,
+    "pull_interval": "10s",
+    "client_id": "12341234-1234-1234-1234-213412341234",
+    "client_id_folder": ".",
+    "address": "api.eu.xdr.trendmicro.com",
+    "token": "abcde...",
+    "log_level": 2,
+    "log_file": "opsalizer.log",
+    "accept_high_risk": false,
+    "accept_medium_risk": false,
+    "accept_low_risk": false,
+    "accept_error": false,
+    "accept_timeout": true,
+    "connection_timeout": "30s",
+    "version": "1.8",
+    "config": "c:\\scripts\\opsalyzer.json"
+}
+```
+
+**Note:** Do not use this configuration "as is". Please use minimal number of the required options removing the rest to use default values.
 
 ## Return Codes
 
@@ -88,5 +119,12 @@ log_file specifies file to write log message and log_level verbosity of the log 
 - 3 - enable debug logging
 
 **Warning:** log file is not limited is size anyhow, so after debugging it should be turned off.
+
+## Periculosum Integration
+
+To reduce amount of not supported files submitted to Deep Discovery Analyzer, (Periculosum)[https://github.com/mpkondrashin/periculosum] project can be used.
+To use Periculosum, just download (latest version)[https://github.com/mpkondrashin/periculosum/releases/latest] and unpack its content to same folder as opsalyzer executable.
+
+**Note:** Put all unpacked files into the same folder as opsalyzer executable and not into subfolder.
 
 ## Opswat MetaDefender Core Configuration (TODO)
