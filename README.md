@@ -62,7 +62,6 @@ Sample of configuration file:
     "accept_timeout": true,
     "connection_timeout": "30s",
     "version": "1.8",
-    "config": "c:\\scripts\\opsalyzer.json"
 }
 ```
 
