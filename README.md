@@ -121,7 +121,9 @@ Sample of configuration file:
 }
 ```
 
-**Note:** Do not use this configuration "as is". Please use minimal number of the required options removing the rest to use default values.
+**Note #1:** Do not use this configuration "as is". Please use minimal number of the required options removing the rest to use default values (see examples above)
+
+**Note #2:** Changing configuration file does not require any Opswat reconfiguration or restart. Next analyzed file will use updated configuration.
 
 ## Return Codes
 
