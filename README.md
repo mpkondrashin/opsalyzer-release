@@ -126,4 +126,30 @@ To use Periculosum, just download (latest version)[https://github.com/mpkondrash
 
 **Note:** Put all unpacked files into the same folder as opsalyzer executable and not into subfolder.
 
-## Opswat MetaDefender Core Configuration (TODO)
+## Installation
+
+1. Download (latest release)[https://github.com/mpkondrashin/opsalyzer-release/releases/latest] and unpack distributive for your platform. 
+2. Unpack archive contents to any folder.
+3. Pick (UUID)[https://www.uuidgenerator.net/] for your Opsalyzer installation.
+4. Create ```config.json``` file with following contents:
+```json
+{
+    "analyzer": "<analyzer address>",
+    "api_key": "<analyzer api key - from menu Help -> About",
+    "ignore_tls_errors": true,
+    "only_cached": true,
+    "client_id": "<UUID generated on step #3>",
+    "log_level": 2,
+    "log_file": "opsalizer.log",
+    "accept_high_risk": false,
+    "accept_medium_risk": false,
+    "accept_low_risk": false,
+    "accept_error": true,
+    "accept_timeout": true,
+    "version": "1.8",
+}
+```
+5. Add path to opsalyzer executables as externas scanner using Opswat GUI
+6. Check file manually
+7. Check opsaluzer.log file for submission event
+8. Remove "log_level" and "log_file" lines from ```config.json```
