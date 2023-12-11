@@ -1,22 +1,30 @@
-# Opswat to Trend Micro Sandbox Integration Untility
+# Opswat to Trend Micro Sandbox Integration Utility
 
 **Opsalyzer provides ability to integrate Deep Discovery Analyzer or Vision One cloud sandbox service as External Scanner to Opswat MetaDefender Core**
 
 ## Installation
 
 1. Download [latest release](https://github.com/mpkondrashin/opsalyzer-release/releases/latest) for your platform. 
-2. Unpack archive contents to any folder on Opswat server.
-3. Pick what kind of sandbox to use: Deep Discovery Analyzer or Vision One Cloud Sandbox service:
-3.1 Deep Discovery Analyzer:
-3.1.1 Pick [UUID](https://www.uuidgenerator.net/) for your Opsalyzer installation.
-3.1.2 Create ```config.json``` file with following contents:
+1. Unpack archive contents to any folder on Opswat server.
+1. Pick what kind of sandbox to use: Deep Discovery Analyzer or Vision One Cloud Sandbox service
+1. For using Deep Discovery Analyzer
+    1. Pick [UUID](https://www.uuidgenerator.net/) for your Opsalyzer installation.
+    1. Create ```config.json``` file with minimal contents (see below)
+1. For using Vision One Cloud Sandbox service create ```config.json``` with minimal contents (see below)
+1. Add path to opsalyzer executables as external scanner using Opswat Web console.
+1. Check one file manually.
+1. Check opsaluzer.log file for successful submission event.
+1. Remove "log_level" and "log_file" lines from ```config.json```.
+1. Optionally, add Periculosum to avoid submitting unsupported files (see next session).
+
+#### Minimal configuration for using Deep Discovery Analyzer
 ```json
 {
     "analyzer": "<analyzer address>",
     "api_key": "<analyzer api key - from menu Help -> About",
     "ignore_tls_errors": true,
     "only_cached": true,
-    "client_id": "<UUID generated on step #3>",
+    "client_id": "<generated UUID>",
     "log_level": 2,
     "log_file": "opsalizer.log",
     "accept_high_risk": false,
@@ -27,8 +35,7 @@
     "version": "1.8",
 }
 ```
-3.2 Vision One Cloud Sandbox service:
-3.2.1 Create ```config.json``` file with following contents:
+#### Minimal configuration for Vision One sandbox service
 ```json
 {
     "address": "api.<your region>.xdr.trendmicro.com"
@@ -43,11 +50,6 @@
     "accept_timeout": true,
 }
 ```
-5. Add path to opsalyzer executables as external scanner using Opswat Web console.
-6. Check one file manually.
-7. Check opsaluzer.log file for successful submission event.
-8. Remove "log_level" and "log_file" lines from ```config.json```.
-9. Optionally, add Periculosum to avoid submitting unsupported files (see next session).
 
 ## Periculosum Integration
 
