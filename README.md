@@ -1,7 +1,60 @@
+# Opswat to Trend Micro Sandbox Integration Untility
 
-# Opswat to Deep Discovery Analyzer Integration Application
+**Opsalyzer provides ability to integrate Deep Discovery Analyzer or Vision One cloud sandbox service as External Scanner to Opswat MetaDefender Core**
 
-**Opsalyzer provides ability to integrate Deep Discovery Analyzer as External Scanner to Opswat MetaDefender Core**
+## Installation
+
+1. Download [latest release](https://github.com/mpkondrashin/opsalyzer-release/releases/latest) for your platform. 
+2. Unpack archive contents to any folder on Opswat server.
+3. Pick what kind of sandbox to use: Deep Discovery Analyzer or Vision One Cloud Sandbox service:
+3.1 Deep Discovery Analyzer:
+3.1.1 Pick [UUID](https://www.uuidgenerator.net/) for your Opsalyzer installation.
+3.1.2 Create ```config.json``` file with following contents:
+```json
+{
+    "analyzer": "<analyzer address>",
+    "api_key": "<analyzer api key - from menu Help -> About",
+    "ignore_tls_errors": true,
+    "only_cached": true,
+    "client_id": "<UUID generated on step #3>",
+    "log_level": 2,
+    "log_file": "opsalizer.log",
+    "accept_high_risk": false,
+    "accept_medium_risk": false,
+    "accept_low_risk": false,
+    "accept_error": true,
+    "accept_timeout": true,
+    "version": "1.8",
+}
+```
+3.2 Vision One Cloud Sandbox service:
+3.2.1 Create ```config.json``` file with following contents:
+```json
+{
+    "address": "api.<your region>.xdr.trendmicro.com"
+    "token": "<generate token using Vision One console>" 
+    "only_cached": true,
+    "log_level": 2,
+    "log_file": "opsalizer.log",
+    "accept_high_risk": false,
+    "accept_medium_risk": false,
+    "accept_low_risk": false,
+    "accept_error": true,
+    "accept_timeout": true,
+}
+```
+5. Add path to opsalyzer executables as external scanner using Opswat Web console.
+6. Check one file manually.
+7. Check opsaluzer.log file for successful submission event.
+8. Remove "log_level" and "log_file" lines from ```config.json```.
+9. Optionally, add Periculosum to avoid submitting unsupported files (see next session).
+
+## Periculosum Integration
+
+To reduce amount of not supported files submitted to Deep Discovery Analyzer, (Periculosum)[https://github.com/mpkondrashin/periculosum] project can be used.
+To use Periculosum, just download (latest version)[https://github.com/mpkondrashin/periculosum/releases/latest] and unpack its content to same folder as opsalyzer executable.
+
+**Note:** Put all unpacked files into the same folder as opsalyzer executable and not into subfolder.
 
 ## Options
 
@@ -118,38 +171,3 @@ log_file specifies file to write log message and log_level verbosity of the log 
 - 3 - enable debug logging
 
 **Warning:** log file is not limited is size anyhow, so after debugging it should be turned off.
-
-## Periculosum Integration
-
-To reduce amount of not supported files submitted to Deep Discovery Analyzer, (Periculosum)[https://github.com/mpkondrashin/periculosum] project can be used.
-To use Periculosum, just download (latest version)[https://github.com/mpkondrashin/periculosum/releases/latest] and unpack its content to same folder as opsalyzer executable.
-
-**Note:** Put all unpacked files into the same folder as opsalyzer executable and not into subfolder.
-
-## Installation
-
-1. Download (latest release)[https://github.com/mpkondrashin/opsalyzer-release/releases/latest] and unpack distributive for your platform. 
-2. Unpack archive contents to any folder.
-3. Pick (UUID)[https://www.uuidgenerator.net/] for your Opsalyzer installation.
-4. Create ```config.json``` file with following contents:
-```json
-{
-    "analyzer": "<analyzer address>",
-    "api_key": "<analyzer api key - from menu Help -> About",
-    "ignore_tls_errors": true,
-    "only_cached": true,
-    "client_id": "<UUID generated on step #3>",
-    "log_level": 2,
-    "log_file": "opsalizer.log",
-    "accept_high_risk": false,
-    "accept_medium_risk": false,
-    "accept_low_risk": false,
-    "accept_error": true,
-    "accept_timeout": true,
-    "version": "1.8",
-}
-```
-5. Add path to opsalyzer executables as externas scanner using Opswat GUI
-6. Check file manually
-7. Check opsaluzer.log file for submission event
-8. Remove "log_level" and "log_file" lines from ```config.json```
