@@ -17,7 +17,7 @@
 1. Remove "log_level" and "log_file" lines from ```config.json```.
 1. Optionally, add Periculosum to avoid submitting unsupported files (see next session).
 
-#### Minimal configuration for using Deep Discovery Analyzer
+Minimal configuration for using Deep Discovery Analyzer:
 ```json
 {
     "analyzer": "<analyzer address>",
@@ -35,7 +35,8 @@
     "version": "1.8",
 }
 ```
-#### Minimal configuration for Vision One sandbox service
+
+Minimal configuration for using Vision One sandbox service:
 ```json
 {
     "address": "api.<your region>.xdr.trendmicro.com"
@@ -88,8 +89,8 @@ Following options are available:
 |Boolean|accept_error<br/>--accept_error<br/>OPSAL_ACCEPT_ERROR|files that resulted error during analysis are trated as non malicious|false|
 |Boolean|accept_timeout<br/>--accept_timeout<br/>OPSAL_ACCEPT_TIMEOUT|files that resulted timeout during analysis are trated as non malicious|false|
 |Duration|connection_timeout<br/>--connection_timeout<br/>OPSAL_CONNECTION_TIMEOUT|Connection timeout|15s|
-|String|version<br/>--version<br/>OPSAL_VERSION|Force Web Services API version|2.0|
-|String|config<br/>--config<br/>OPSAL_CONFIG|Configuration file path|none|
+|String|version<br/>--version<br/>OPSAL_VERSION|Force Web Services API version (only if Analyzer used)|2.0|
+|String|--config<br/>OPSAL_CONFIG|Provide alternative configuration file path|none|
 
 
 ## Configuration file sample
