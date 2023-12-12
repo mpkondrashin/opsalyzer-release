@@ -11,7 +11,7 @@
     1. Pick [UUID](https://www.uuidgenerator.net/) for your Opsalyzer installation.
     1. Create ```config.json``` file with minimal contents (see below)
 1. For using Vision One Cloud Sandbox service create ```config.json``` with minimal contents (see below)
-1. Add path to opsalyzer executables as external scanner using Opswat Web console.
+1. Add path to opsalyzer executables as [external scanner](https://docs.opswat.com/mdcore/configuration/external-scanners-and-post-actions) using Opswat Web console. 
 1. Check one file manually.
 1. Check opsaluzer.log file for successful submission event.
 1. Remove "log_level" and "log_file" lines from ```config.json```.
