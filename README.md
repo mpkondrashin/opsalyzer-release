@@ -7,12 +7,9 @@
 1. Download [latest release](https://github.com/mpkondrashin/opsalyzer-release/releases/latest) for your platform. 
 1. Unpack archive contents to any folder on Opswat server.
 1. Pick what kind of sandbox to use: Deep Discovery Analyzer or Vision One Cloud Sandbox service
-1. For using Deep Discovery Analyzer
-    1. Pick [UUID](https://www.uuidgenerator.net/) for your Opsalyzer installation.
-    1. Create ```config.json``` file with minimal contents (see below)
-1. For using Vision One Cloud Sandbox service create ```config.json``` with minimal contents (see below)
+1. Create ```config.json``` file with minimal contents (see below)
 1. Add path to opsalyzer executables as [external scanner](https://docs.opswat.com/mdcore/configuration/external-scanners-and-post-actions) using Opswat Web console. 
-1. Check one file manually.
+1. For testing: Check one file manually.
 1. Check opsaluzer.log file for successful submission event.
 1. Remove "log_level" and "log_file" lines from ```config.json```.
 1. Optionally, add Periculosum to avoid submitting unsupported files (see next session).
@@ -24,7 +21,6 @@ Minimal configuration for using Deep Discovery Analyzer:
     "api_key": "<analyzer api key - from menu Help -> About",
     "ignore_tls_errors": true,
     "only_cached": true,
-    "client_id": "<generated UUID>",
     "log_level": 2,
     "log_file": "opsalizer.log",
     "accept_high_risk": false,
@@ -32,7 +28,6 @@ Minimal configuration for using Deep Discovery Analyzer:
     "accept_low_risk": false,
     "accept_error": true,
     "accept_timeout": true,
-    "version": "1.8",
 }
 ```
 
