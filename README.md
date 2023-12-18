@@ -70,19 +70,19 @@ Following options are available:
 
 | Type | JSON Option<br/>Command line<br/>Env Variable | Description | Default |
 | ---- | --------------------------------------------- | ----------- | ------- |
-|String|analyzer<br/>--analyzer<br/>OPSAL_ANALYZER|Analyzer address (only if Analyzer used)|none|
+|String|analyzer<br/>--analyzer<br/>OPSAL_ANALYZER|Analyzer URL (only if Analyzer used). Should be in form https://&lt;address&gt;|none|
 |String|api_key<br/>--api_key<br/>OPSAL_API_KEY|Analyzer API key (only if Analyzer used)|none|
 |String|max_file_size<br/>--max_file_size<br/>OPSAL_MAX_FILE_SIZE|maximum file size|50MB|
 |Boolean|ignore_tls_errors<br/>--ignore_tls_errors<br/>OPSAL_IGNORE_TLS_ERRORS|ignore TLS errors. (only if Analyzer used)|false|
 |Duration|timeout<br/>--timeout<br/>OPSAL_TIMEOUT|file analysis timeout|20m|
 |Boolean|only_cached<br/>--only_cached<br/>OPSAL_ONLY_CACHED|do not wait from analysis result. Only check Analyzer cache|false|
 |Duration|pull_interval<br/>--pull_interval<br/>OPSAL_PULL_INTERVAL|iterval to check file analysis result|1m|
-|String|client_id<br/>--client_id<br/>OPSAL_CLIENT_ID|Client ID for Analyzer. It is generated automatically if missing. (only if Analyzer used)|none|
-|String|client_id_folder<br/>--client_id_folder<br/>OPSAL_CLIENT_ID_FOLDER|Folder for Client ID file. It defaults to current folder for opsalyzer process. (only if Analyzer used)|.|
+|String|client_id<br/>--client_id<br/>OPSAL_CLIENT_ID|Client ID for Analyzer. It is generated automatically if missing. (only if Analyzer used). Use same client_id to make all Opsalyzers showup on the Analyzer console as a single submitter|none|
+|String|client_id_folder<br/>--client_id_folder<br/>OPSAL_CLIENT_ID_FOLDER|Folder for Client ID file. It defaults to current folder for opsalyzer process. (only if Analyzer used)|none|
 |String|address<br/>--address<br/>OPSAL_ADDRESS|Vision One address (only if Vision One Sandbox is used)|none|
 |String|token<br/>--token<br/>OPSAL_TOKEN|Vision One token (only if Vision One Sandbox is used)|none|
 |Integer|log_level<br/>--log_level<br/>OPSAL_LOG_LEVEL|Log level 0-none, 1-warnings, 2-info, 3-debug|0|
-|String|log_file<br/>--log_file<br/>OPSAL_LOG_FILE|filename to write log|none|
+|String|log_file<br/>--log_file<br/>OPSAL_LOG_FILE|filename to write log (absolute path or relative from folder where opsalyzer executable reside)|none|
 |Boolean|accept_high_risk<br/>--accept_high_risk<br/>OPSAL_ACCEPT_HIGH_RISK|files detected as high risk are trated as non malicious|false|
 |Boolean|accept_medium_risk<br/>--accept_medium_risk<br/>OPSAL_ACCEPT_MEDIUM_RISK|files detected as medium risk are trated as non malicious|false|
 |Boolean|accept_low_risk<br/>--accept_low_risk<br/>OPSAL_ACCEPT_LOW_RISK|files detected as low risk are trated as non malicious|false|
@@ -98,7 +98,7 @@ Following options are available:
 Sample of configuration file:
 ```json
 {
-    "analyzer": "1.2.3.4",
+    "analyzer": "https://1.2.3.4",
     "api_key": "12341234-1234-1234-1234-213412341234",
     "max_file_size": "25MB",
     "ignore_tls_errors": true,
@@ -110,7 +110,7 @@ Sample of configuration file:
     "address": "api.eu.xdr.trendmicro.com",
     "token": "abcde...",
     "log_level": 2,
-    "log_file": "opsalizer.log",
+    "log_file": "opsalyzer.log",
     "accept_high_risk": false,
     "accept_medium_risk": false,
     "accept_low_risk": false,
@@ -161,6 +161,8 @@ error, non zero Return Code can be checked to diagnose a problem.
 |26|Config file missing|
 |27|Read file error|
 |28|Missing vision one domain|
+|29|Get executable path error|
+|30|Client i d format error|
 
 
 For further diagnostics logging can be enabled.
