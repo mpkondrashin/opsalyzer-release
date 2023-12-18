@@ -157,7 +157,7 @@ error, non zero Return Code can be checked to diagnose a problem.
 |27|Read file error|
 |28|Missing vision one domain|
 |29|Get executable path error|
-|30|Client i d format error|
+|30|Client id format error|
 
 
 For further diagnostics logging can be enabled.
