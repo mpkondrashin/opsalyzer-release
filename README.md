@@ -49,8 +49,8 @@ Minimal configuration for using Vision One sandbox service:
 
 ## Periculosum Integration
 
-To reduce amount of not supported files submitted to Deep Discovery Analyzer, (Periculosum)[https://github.com/mpkondrashin/periculosum] project can be used.
-To use Periculosum, just download (latest version)[https://github.com/mpkondrashin/periculosum/releases/latest] and unpack its content to same folder as opsalyzer executable.
+To reduce amount of not supported files submitted to Deep Discovery Analyzer, [Periculosum](https://github.com/mpkondrashin/periculosum) project can be used.
+To use Periculosum, just download [latest version](https://github.com/mpkondrashin/periculosum/releases/latest) and unpack its content to same folder as opsalyzer executable.
 
 **Note:** Put all unpacked files into the same folder as opsalyzer executable and not into subfolder.
 
@@ -67,13 +67,13 @@ Following options are available:
 | ---- | --------------------------------------------- | ----------- | ------- |
 |String|analyzer<br/>--analyzer<br/>OPSAL_ANALYZER|Analyzer URL (only if Analyzer used). Should be in form https://&lt;address&gt;|none|
 |String|api_key<br/>--api_key<br/>OPSAL_API_KEY|Analyzer API key (only if Analyzer used)|none|
-|String|max_file_size<br/>--max_file_size<br/>OPSAL_MAX_FILE_SIZE|maximum file size|50MB|
+|String|max_file_size<br/>--max_file_size<br/>OPSAL_MAX_FILE_SIZE|maximum file size (should be less or equal to the limit of Analyzer/Vision One)|50MB|
 |Boolean|ignore_tls_errors<br/>--ignore_tls_errors<br/>OPSAL_IGNORE_TLS_ERRORS|ignore TLS errors. (only if Analyzer used)|false|
 |Duration|timeout<br/>--timeout<br/>OPSAL_TIMEOUT|file analysis timeout|20m|
-|Boolean|only_cached<br/>--only_cached<br/>OPSAL_ONLY_CACHED|do not wait from analysis result. Only check Analyzer cache|false|
+|Boolean|only_cached<br/>--only_cached<br/>OPSAL_ONLY_CACHED|do not wait from analysis result. Only check Analyzer/Vision One cache|false|
 |Duration|pull_interval<br/>--pull_interval<br/>OPSAL_PULL_INTERVAL|iterval to check file analysis result|1m|
-|String|client_id<br/>--client_id<br/>OPSAL_CLIENT_ID|Client ID for Analyzer. It is generated automatically if missing. (only if Analyzer used). Use same client_id to make all Opsalyzers showup on the Analyzer console as a single submitter|none|
-|String|client_id_folder<br/>--client_id_folder<br/>OPSAL_CLIENT_ID_FOLDER|Folder for Client ID file. It defaults to current folder for opsalyzer process. (only if Analyzer used)|none|
+|String|client_id<br/>--client_id<br/>OPSAL_CLIENT_ID|Client ID for Analyzer. It is generated automatically if missing. (only if Analyzer used). Use same client_id to make all Opsalyzers show up on the Analyzer console as a single submitter|none|
+|String|client_id_folder<br/>--client_id_folder<br/>OPSAL_CLIENT_ID_FOLDER|Folder for Client ID file. It defaults to current folder for opsalyzer process. No need if client_id option is provided (only if Analyzer used)|none|
 |String|address<br/>--address<br/>OPSAL_ADDRESS|Vision One address (only if Vision One Sandbox is used)|none|
 |String|token<br/>--token<br/>OPSAL_TOKEN|Vision One token (only if Vision One Sandbox is used)|none|
 |Integer|log_level<br/>--log_level<br/>OPSAL_LOG_LEVEL|Log level 0-none, 1-warnings, 2-info, 3-debug|0|
@@ -90,7 +90,7 @@ Following options are available:
 
 ## Configuration file sample
 
-Sample of configuration file:
+Sample of configuration file with all possible parameters):
 ```json
 {
     "analyzer": "https://1.2.3.4",
