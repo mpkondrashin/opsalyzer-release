@@ -5,7 +5,7 @@
 ## Installation
 
 1. Download [latest release](https://github.com/mpkondrashin/opsalyzer-release/releases/latest) for your platform. 
-1. Unpack archive contents to any folder on Opswat server.
+1. Unpack archive contents to any folder on Opswat server, i.e. ```C:\Opsalyzer```.
 1. Pick what kind of sandbox to use: Deep Discovery Analyzer or Vision One Cloud Sandbox service
 1. Create ```config.json``` file with minimal contents (see below)
 1. Add path to opsalyzer executables as [external scanner](https://docs.opswat.com/mdcore/configuration/external-scanners-and-post-actions) using Opswat Web console. 
@@ -22,12 +22,12 @@ Minimal configuration for using Deep Discovery Analyzer:
     "ignore_tls_errors": true,
     "only_cached": true,
     "log_level": 2,
-    "log_file": "opsalizer.log",
+    "log_file": "C:\\Opsalyzer\\opsalyzer.log",
     "accept_high_risk": false,
     "accept_medium_risk": false,
     "accept_low_risk": false,
     "accept_error": true,
-    "accept_timeout": true,
+    "accept_timeout": true
 }
 ```
 
@@ -38,12 +38,12 @@ Minimal configuration for using Vision One sandbox service:
     "token": "<generate token using Vision One console>" 
     "only_cached": true,
     "log_level": 2,
-    "log_file": "opsalizer.log",
+    "log_file": "C:\\Opsalyzer\\opsalyzer.log",
     "accept_high_risk": false,
     "accept_medium_risk": false,
     "accept_low_risk": false,
     "accept_error": true,
-    "accept_timeout": true,
+    "accept_timeout": true
 }
 ```
 
@@ -90,7 +90,7 @@ Following options are available:
 
 ## Configuration file sample
 
-Sample of configuration file with all possible parameters):
+Sample of configuration file with all possible parameters:
 ```json
 {
     "analyzer": "https://1.2.3.4",
