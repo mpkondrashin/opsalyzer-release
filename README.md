@@ -83,6 +83,7 @@ Following options are available:
 |Boolean|accept_low_risk<br/>--accept_low_risk<br/>OPSAL_ACCEPT_LOW_RISK|files detected as low risk are trated as non malicious|false|
 |Boolean|accept_error<br/>--accept_error<br/>OPSAL_ACCEPT_ERROR|files that resulted error during analysis are trated as non malicious|false|
 |Boolean|accept_timeout<br/>--accept_timeout<br/>OPSAL_ACCEPT_TIMEOUT|files that resulted timeout during analysis are trated as non malicious|false|
+|Boolean|accept_big_file<br/>--accept_big_file<br/>OPSAL_ACCEPT_BIG_FILE|file that are note analyzed due to their big size are trated as non malicious|true|
 |Duration|connection_timeout<br/>--connection_timeout<br/>OPSAL_CONNECTION_TIMEOUT|Connection timeout for Web API connections|15s|
 |String|version<br/>--version<br/>OPSAL_VERSION|Force Web Services API version (only if Analyzer used)|2.0|
 |String|--config<br/>OPSAL_CONFIG|Provide alternative configuration file path|none|
@@ -111,6 +112,7 @@ Sample of configuration file with all possible parameters:
     "accept_low_risk": false,
     "accept_error": false,
     "accept_timeout": true,
+    "accept_big_file": false,
     "connection_timeout": "30s",
     "version": "1.8",
 }
