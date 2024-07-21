@@ -1,5 +1,8 @@
 # Opswat to Trend Micro Sandbox Integration Utility
 
+![Opsalyzer Logo](opsalyzer_logo.jpg)
+
+
 **Opsalyzer provides ability to integrate Deep Discovery Analyzer or Vision One cloud sandbox service as External Scanner to Opswat MetaDefender Core**
 
 ## Installation
