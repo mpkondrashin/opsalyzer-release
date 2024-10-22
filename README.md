@@ -60,7 +60,7 @@ To use Periculosum, just download [latest version](https://github.com/mpkondrash
 ## Options
 
 Opsalyzer provides following ways to provide options:
-1. Configuration file config.json. Application seeks for this file in its current folder
+1. Configuration file config.yaml. Application seeks for this file in its current folder
 2. Environment variables
 3. Command line parameters
 
@@ -68,28 +68,45 @@ Following options are available:
 
 | Type | JSON Option<br/>Command line<br/>Env Variable | Description | Default |
 | ---- | --------------------------------------------- | ----------- | ------- |
-|String|analyzer<br/>--analyzer<br/>OPSAL_ANALYZER|Analyzer URL (only if Analyzer used). Should be in form https://&lt;address&gt;|none|
-|String|api_key<br/>--api_key<br/>OPSAL_API_KEY|Analyzer API key (only if Analyzer used)|none|
-|String|max_file_size<br/>--max_file_size<br/>OPSAL_MAX_FILE_SIZE|maximum file size (should be less or equal to the limit of Analyzer/Vision One)|50MB|
-|Boolean|ignore_tls_errors<br/>--ignore_tls_errors<br/>OPSAL_IGNORE_TLS_ERRORS|ignore TLS errors. (only if Analyzer used)|false|
-|Duration|timeout<br/>--timeout<br/>OPSAL_TIMEOUT|file analysis timeout|20m|
+|String|engine<br/>--engine<br/>OPSAL_ENGINE|Scan engine: Analyzer, VisionOne|none|
+|String|analyzer.address<br/>--analyzer.address<br/>OPSAL_ANALYZER.ADDRESS|Analyzer URL (only if Analyzer used). Should be in form https://&lt;address&gt;|none|
+|String|analyzer.api_key<br/>--analyzer.api_key<br/>OPSAL_ANALYZER.API_KEY|Analyzer API key (only if Analyzer used)|none|
+|String|analyzer.max_file_size<br/>--analyzer.max_file_size<br/>OPSAL_ANALYZER.MAX_FILE_SIZE|maximum file size (should be less or equal to the limit of Analyzer/Vision One)|50MB|
+|Boolean|analyzer.ignore_tls_errors<br/>--analyzer.ignore_tls_errors<br/>OPSAL_ANALYZER.IGNORE_TLS_ERRORS|ignore TLS errors. (only if Analyzer used)|false|
+|Duration|analyzer.timeout<br/>--analyzer.timeout<br/>OPSAL_ANALYZER.TIMEOUT|file analysis timeout|20m|
 |Boolean|only_cached<br/>--only_cached<br/>OPSAL_ONLY_CACHED|do not wait from analysis result. Only check Analyzer/Vision One cache|false|
-|Duration|pull_interval<br/>--pull_interval<br/>OPSAL_PULL_INTERVAL|iterval to check file analysis result|1m|
-|String|client_id<br/>--client_id<br/>OPSAL_CLIENT_ID|Client ID for Analyzer. It is generated automatically if missing. (only if Analyzer used). Use same client_id to make all Opsalyzers show up on the Analyzer console as a single submitter|none|
-|String|client_id_folder<br/>--client_id_folder<br/>OPSAL_CLIENT_ID_FOLDER|Folder for Client ID file. It defaults to current folder for opsalyzer process. No need if client_id option is provided (only if Analyzer used)|none|
-|String|address<br/>--address<br/>OPSAL_ADDRESS|Vision One address (only if Vision One Sandbox is used)|none|
-|String|token<br/>--token<br/>OPSAL_TOKEN|Vision One token (only if Vision One Sandbox is used)|none|
-|Integer|log_level<br/>--log_level<br/>OPSAL_LOG_LEVEL|Log level 0-none, 1-warnings, 2-info, 3-debug|0|
-|String|log_file<br/>--log_file<br/>OPSAL_LOG_FILE|filename to write log (absolute path or relative from folder where opsalyzer executable reside)|none|
-|Boolean|accept_high_risk<br/>--accept_high_risk<br/>OPSAL_ACCEPT_HIGH_RISK|files detected as high risk are trated as non malicious|false|
-|Boolean|accept_medium_risk<br/>--accept_medium_risk<br/>OPSAL_ACCEPT_MEDIUM_RISK|files detected as medium risk are trated as non malicious|false|
-|Boolean|accept_low_risk<br/>--accept_low_risk<br/>OPSAL_ACCEPT_LOW_RISK|files detected as low risk are trated as non malicious|false|
-|Boolean|accept_error<br/>--accept_error<br/>OPSAL_ACCEPT_ERROR|files that resulted error during analysis are trated as non malicious|false|
-|Boolean|accept_timeout<br/>--accept_timeout<br/>OPSAL_ACCEPT_TIMEOUT|files that resulted timeout during analysis are trated as non malicious|false|
-|Boolean|accept_big_file<br/>--accept_big_file<br/>OPSAL_ACCEPT_BIG_FILE|file that are note analyzed due to their big size are trated as non malicious|true|
+|Duration|analyzer.pull_interval<br/>--analyzer.pull_interval<br/>OPSAL_ANALYZER.PULL_INTERVAL|iterval to check file analysis result|1m|
+|String|analyzer.client_id<br/>--analyzer.client_id<br/>OPSAL_ANALYZER.CLIENT_ID|Client ID for Analyzer. It is generated automatically if missing. (only if Analyzer used). Use same client_id to make all Opsalyzers show up on the Analyzer console as a single submitter|none|
+|String|analyzer.client_id_folder<br/>--analyzer.client_id_folder<br/>OPSAL_ANALYZER.CLIENT_ID_FOLDER|Folder for Client ID file. It defaults to current folder for opsalyzer process. No need if client_id option is provided (only if Analyzer used)|none|
+|String|analyzer.product_name<br/>--analyzer.product_name<br/>OPSAL_ANALYZER.PRODUCT_NAME|DDAn Product name (do not change!)|Opsalyzer|
+|String|analyzer.source_id<br/>--analyzer.source_id<br/>OPSAL_ANALYZER.SOURCE_ID|DDAn Source ID (do not change!)|501|
+|String|analyzer.source_name<br/>--analyzer.source_name<br/>OPSAL_ANALYZER.SOURCE_NAME|DDAn Source Name (do not change!)|Opswat|
+|String|analyzer.hostname<br/>--analyzer.hostname<br/>OPSAL_ANALYZER.HOSTNAME|Hostname (do not change!)|none|
+|String|analyzer.protocol_version<br/>--analyzer.protocol_version<br/>OPSAL_ANALYZER.PROTOCOL_VERSION|DDAn Protocol version (do not change!)|2.0|
+|String|vone.domain<br/>--vone.domain<br/>OPSAL_VONE.DOMAIN|Vision One address (only if Vision One Sandbox is used)|none|
+|String|vone.token<br/>--vone.token<br/>OPSAL_VONE.TOKEN|Vision One token (only if Vision One Sandbox is used)|none|
+|Integer|log.level<br/>--log.level<br/>OPSAL_LOG.LEVEL|Log level 0-none, 1-warnings, 2-info, 3-debug|0|
+|String|log.file<br/>--log.file<br/>OPSAL_LOG.FILE|filename to write log (absolute path or relative from folder where opsalyzer executable reside)|opsalyzer.log|
+|Integer|log.max_size<br/>--log.max_size<br/>OPSAL_LOG.MAX_SIZE|filename to write log (absolute path or relative from folder where opsalyzer executable reside)|100000000|
+|Integer|log.keep<br/>--log.keep<br/>OPSAL_LOG.KEEP|filename to write log (absolute path or relative from folder where opsalyzer executable reside)|10|
+|Boolean|accept.high_risk<br/>--accept.high_risk<br/>OPSAL_ACCEPT.HIGH_RISK|files detected as high risk are trated as non malicious|false|
+|Boolean|accept.medium_risk<br/>--accept.medium_risk<br/>OPSAL_ACCEPT.MEDIUM_RISK|files detected as medium risk are trated as non malicious|false|
+|Boolean|accept.low_risk<br/>--accept.low_risk<br/>OPSAL_ACCEPT.LOW_RISK|files detected as low risk are trated as non malicious|false|
+|Boolean|accept.error<br/>--accept.error<br/>OPSAL_ACCEPT.ERROR|files that resulted error during analysis are trated as non malicious|false|
+|Boolean|accept.timeout<br/>--accept.timeout<br/>OPSAL_ACCEPT.TIMEOUT|files that resulted timeout during analysis are trated as non malicious|false|
+|Boolean|accept.big_file<br/>--accept.big_file<br/>OPSAL_ACCEPT.BIG_FILE|file that are note analyzed due to their big size are trated as non malicious|true|
 |Duration|connection_timeout<br/>--connection_timeout<br/>OPSAL_CONNECTION_TIMEOUT|Connection timeout for Web API connections|15s|
-|String|version<br/>--version<br/>OPSAL_VERSION|Force Web Services API version (only if Analyzer used)|2.0|
-|String|--config<br/>OPSAL_CONFIG|Provide alternative configuration file path|none|
+|String|--version<br/>OPSAL_VERSION|Force Web Services API version (only if Analyzer used)|2.0|
+|String|config<br/>--config<br/>OPSAL_CONFIG|Provide alternative configuration file path|none|
+|Boolean|proxy.active<br/>--proxy.active<br/>OPSAL_PROXY.ACTIVE|use proxy|false|
+|String|proxy.address<br/>--proxy.address<br/>OPSAL_PROXY.ADDRESS|Proxy address|none|
+|Integer|proxy.port<br/>--proxy.port<br/>OPSAL_PROXY.PORT|Proxy port|0|
+|String|proxy.authtype<br/>--proxy.authtype<br/>OPSAL_PROXY.AUTHTYPE|Proxy authentication type: None, Basic, NTLM|None|
+|String|proxy.username<br/>--proxy.username<br/>OPSAL_PROXY.USERNAME|Proxy username|none|
+|String|proxy.password<br/>--proxy.password<br/>OPSAL_PROXY.PASSWORD|Proxy password|none|
+|String|proxy.domain<br/>--proxy.domain<br/>OPSAL_PROXY.DOMAIN|NTLM auth domain|none|
+|String|unsupported.folder<br/>--unsupported.folder<br/>OPSAL_UNSUPPORTED.FOLDER|folder for unsupported files|unsupported|
+|Integer|unsupported.limit<br/>--unsupported.limit<br/>OPSAL_UNSUPPORTED.LIMIT|limit of unsupported files to keep. Older ones will be deleted|10|
 
 
 ## Configuration file sample
@@ -97,27 +114,44 @@ Following options are available:
 Sample of configuration file with all possible parameters:
 ```json
 {
-    "analyzer": "https://1.2.3.4",
-    "api_key": "12341234-1234-1234-1234-213412341234",
-    "max_file_size": "25MB",
-    "ignore_tls_errors": true,
-    "timeout": "5m",
+    "engine": "analyzer",
+    "analyzer.address": "https://1.2.3.4",
+    "analyzer.api_key": "12341234-1234-1234-1234-213412341234",
+    "analyzer.max_file_size": "25MB",
+    "analyzer.ignore_tls_errors": true,
+    "analyzer.timeout": "5m",
     "only_cached": false,
-    "pull_interval": "10s",
-    "client_id": "12341234-1234-1234-1234-213412341234",
-    "client_id_folder": ".",
-    "address": "api.eu.xdr.trendmicro.com",
-    "token": "abcde...",
-    "log_level": 2,
-    "log_file": "opsalyzer.log",
-    "accept_high_risk": false,
-    "accept_medium_risk": false,
-    "accept_low_risk": false,
-    "accept_error": false,
-    "accept_timeout": true,
-    "accept_big_file": false,
+    "analyzer.pull_interval": "10s",
+    "analyzer.client_id": "12341234-1234-1234-1234-213412341234",
+    "analyzer.client_id_folder": ".",
+    "analyzer.product_name": "",
+    "analyzer.source_id": "",
+    "analyzer.source_name": "",
+    "analyzer.hostname": "",
+    "analyzer.protocol_version": "1.8",
+    "vone.domain": "api.eu.xdr.trendmicro.com",
+    "vone.token": "abcde...",
+    "log.level": 2,
+    "log.file": "opsalyzer.log",
+    "log.max_size": 100000,
+    "log.keep": 3,
+    "accept.high_risk": false,
+    "accept.medium_risk": false,
+    "accept.low_risk": false,
+    "accept.error": true,
+    "accept.timeout": true,
+    "accept.big_file": true,
     "connection_timeout": "30s",
     "version": "1.8",
+    "proxy.active": true,
+    "proxy.address": "10.10.10.1",
+    "proxy.port": 3128,
+    "proxy.authtype": "NTLM",
+    "proxy.username": "michael",
+    "proxy.password": "Kr24^s_%12sa",
+    "proxy.domain": "company.local",
+    "unsupported.folder": "unsupported",
+    "unsupported.limit": 100
 }
 ```
 
@@ -136,7 +170,7 @@ error, non zero Return Code can be checked to diagnose a problem.
 |1|Viper bind p flags error|
 |2|Program crash|
 |3|Command line error|
-|4|Config read error|
+|4|Configuration error|
 |5|Open log error|
 |6|Get hostname failed|
 |7|Analyzer url format error|
@@ -163,6 +197,7 @@ error, non zero Return Code can be checked to diagnose a problem.
 |28|Missing vision one domain|
 |29|Get executable path error|
 |30|Client id format error|
+|31|Unknown antivirus type|
 
 
 For further diagnostics logging can be enabled.
