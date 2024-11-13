@@ -18,36 +18,46 @@
 1. Optionally, add Periculosum to avoid submitting unsupported files (see next session).
 
 Minimal configuration for using Deep Discovery Analyzer:
-```json
-{
-    "analyzer": "<analyzer address>",
-    "api_key": "<analyzer api key - from menu Help -> About",
-    "ignore_tls_errors": true,
-    "only_cached": true,
-    "log_level": 2,
-    "log_file": "C:\\Opsalyzer\\opsalyzer.log",
-    "accept_high_risk": false,
-    "accept_medium_risk": false,
-    "accept_low_risk": false,
-    "accept_error": true,
-    "accept_timeout": true
-}
+```yaml
+analyzer:
+  address: <analyzer address>,
+  api_key: <analyzer api key - from menu Help -> About>
+  ignore_tls_errors: true
+log:
+  keep: 3
+  level: 2
+  file: opsalyzer.log
+  max_size: 100000
+accept:
+  medium_risk: false
+  low_risk: false
+  error: true
+  timeout: true
+  big_file: true
+  high_risk: false
+engine: analyzer
+only_cached: true
 ```
 
 Minimal configuration for using Vision One sandbox service:
-```json
-{
-    "address": "api.<your region>.xdr.trendmicro.com"
-    "token": "<generate token using Vision One console>" 
-    "only_cached": true,
-    "log_level": 2,
-    "log_file": "C:\\Opsalyzer\\opsalyzer.log",
-    "accept_high_risk": false,
-    "accept_medium_risk": false,
-    "accept_low_risk": false,
-    "accept_error": true,
-    "accept_timeout": true
-}
+```yaml
+vone:
+  domain: api.<your region>.xdr.trendmicro.com
+  token: "<generate token using Vision One console>" 
+log:
+  keep: 3
+  level: 2
+  file: opsalyzer.log
+  max_size: 100000
+accept:
+  medium_risk: false
+  low_risk: false
+  error: true
+  timeout: true
+  big_file: true
+  high_risk: false
+engine: analyzer
+only_cached: true
 ```
 
 ## Periculosum Integration
@@ -112,47 +122,52 @@ Following options are available:
 ## Configuration file sample
 
 Sample of configuration file with all possible parameters:
-```json
-{
-    "engine": "analyzer",
-    "analyzer.address": "https://1.2.3.4",
-    "analyzer.api_key": "12341234-1234-1234-1234-213412341234",
-    "analyzer.max_file_size": "25MB",
-    "analyzer.ignore_tls_errors": true,
-    "analyzer.timeout": "5m",
-    "only_cached": false,
-    "analyzer.pull_interval": "10s",
-    "analyzer.client_id": "12341234-1234-1234-1234-213412341234",
-    "analyzer.client_id_folder": ".",
-    "analyzer.product_name": "",
-    "analyzer.source_id": "",
-    "analyzer.source_name": "",
-    "analyzer.hostname": "",
-    "analyzer.protocol_version": "1.8",
-    "vone.domain": "api.eu.xdr.trendmicro.com",
-    "vone.token": "abcde...",
-    "log.level": 2,
-    "log.file": "opsalyzer.log",
-    "log.max_size": 100000,
-    "log.keep": 3,
-    "accept.high_risk": false,
-    "accept.medium_risk": false,
-    "accept.low_risk": false,
-    "accept.error": true,
-    "accept.timeout": true,
-    "accept.big_file": true,
-    "connection_timeout": "30s",
-    "version": "1.8",
-    "proxy.active": true,
-    "proxy.address": "10.10.10.1",
-    "proxy.port": 3128,
-    "proxy.authtype": "NTLM",
-    "proxy.username": "michael",
-    "proxy.password": "Kr24^s_%12sa",
-    "proxy.domain": "company.local",
-    "unsupported.folder": "unsupported",
-    "unsupported.limit": 100
-}
+```yaml
+version: 1.8
+unsupported:
+  folder: unsupported
+  limit: 100
+accept:
+  high_risk: false
+  medium_risk: false
+  low_risk: false
+  error: true
+  timeout: true
+  big_file: true
+connection_timeout: 30s
+proxy:
+  active: true
+  address: 10.10.10.1
+  port: 3128
+  authtype: NTLM
+  username: michael
+  password: Kr24^s_%12sa
+  domain: company.local
+engine: analyzer
+analyzer:
+  ignore_tls_errors: true
+  timeout: 5m
+  pull_interval: 10s
+  product_name: 
+  source_id: 
+  source_name: 
+  hostname: 
+  protocol_version: 1.8
+  address: https://1.2.3.4
+  api_key: 12341234-1234-1234-1234-213412341234
+  max_file_size: 25MB
+  client_id: 12341234-1234-1234-1234-213412341234
+  client_id_folder: .
+only_cached: false
+vone:
+  token: abcde...
+  domain: api.eu.xdr.trendmicro.com
+log:
+  level: 2
+  file: opsalyzer.log
+  max_size: 100000
+  keep: 3
+
 ```
 
 **Note #1:** Do not use this configuration "as is". Please use minimal number of the required options removing the rest to use default values (see examples above)
