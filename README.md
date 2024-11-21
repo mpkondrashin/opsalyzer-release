@@ -123,50 +123,50 @@ Following options are available:
 
 Sample of configuration file with all possible parameters:
 ```yaml
+only_cached: false
+connection_timeout: 30s
+unsupported:
+  folder: unsupported
+  limit: 100
 analyzer:
-  api_key: 12341234-1234-1234-1234-213412341234
-  max_file_size: 25MB
-  timeout: 5m
-  client_id: 12341234-1234-1234-1234-213412341234
-  hostname: 
-  source_id: 
-  source_name: 
-  protocol_version: 1.8
-  address: https://1.2.3.4
-  ignore_tls_errors: true
   pull_interval: 10s
+  client_id: 12341234-1234-1234-1234-213412341234
   client_id_folder: .
   product_name: 
+  source_name: 
+  address: https://1.2.3.4
+  ignore_tls_errors: true
+  timeout: 5m
+  hostname: 
+  protocol_version: 1.8
+  api_key: 12341234-1234-1234-1234-213412341234
+  max_file_size: 25MB
+  source_id: 
+vone:
+  domain: api.eu.xdr.trendmicro.com
+  token: abcde...
+log:
+  level: 2
+  file: opsalyzer.log
+  max_size: 100000
+  keep: 3
+accept:
+  low_risk: false
+  error: true
+  timeout: true
+  big_file: true
+  high_risk: false
+  medium_risk: false
+version: 1.8
 proxy:
-  domain: company.local
   active: true
   address: 10.10.10.1
   port: 3128
   authtype: NTLM
   username: michael
   password: Kr24^s_%12sa
+  domain: company.local
 engine: analyzer
-only_cached: false
-vone:
-  domain: api.eu.xdr.trendmicro.com
-  token: abcde...
-log:
-  max_size: 100000
-  keep: 3
-  level: 2
-  file: opsalyzer.log
-accept:
-  medium_risk: false
-  low_risk: false
-  error: true
-  timeout: true
-  big_file: true
-  high_risk: false
-connection_timeout: 30s
-version: 1.8
-unsupported:
-  limit: 100
-  folder: unsupported
 
 ```
 
