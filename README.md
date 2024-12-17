@@ -124,51 +124,51 @@ Following options are available:
 
 Sample of configuration file with all possible parameters:
 ```yaml
-dispense: 3/5
-vone:
-  domain: api.eu.xdr.trendmicro.com
-  token: abcde...
+log:
+  level: 2
+  file: opsalyzer.log
+  max_size: 100000
+  keep: 3
 accept:
-  timeout: true
-  big_file: true
-  high_risk: false
   medium_risk: false
   low_risk: false
   error: true
-connection_timeout: 30s
-version: 1.8
-engine: analyzer
-analyzer:
-  ignore_tls_errors: true
-  product_name: 
-  hostname: 
-  timeout: 5m
-  pull_interval: 10s
-  client_id: 12341234-1234-1234-1234-213412341234
-  client_id_folder: .
-  source_id: 
-  address: https://1.2.3.4
-  api_key: 12341234-1234-1234-1234-213412341234
-  max_file_size: 25MB
-  source_name: 
-  protocol_version: 1.8
+  timeout: true
+  big_file: true
+  high_risk: false
 proxy:
+  domain: company.local
   active: true
   address: 10.10.10.1
   port: 3128
   authtype: NTLM
   username: michael
   password: Kr24^s_%12sa
-  domain: company.local
+dispense: 3/5
+vone:
+  domain: api.eu.xdr.trendmicro.com
+  token: abcde...
+only_cached: false
+connection_timeout: 30s
+version: 1.8
 unsupported:
   folder: unsupported
   limit: 100
-only_cached: false
-log:
-  level: 2
-  file: opsalyzer.log
-  max_size: 100000
-  keep: 3
+engine: analyzer
+analyzer:
+  source_name: 
+  api_key: 12341234-1234-1234-1234-213412341234
+  max_file_size: 25MB
+  pull_interval: 10s
+  client_id: 12341234-1234-1234-1234-213412341234
+  client_id_folder: .
+  product_name: 
+  source_id: 
+  address: https://1.2.3.4
+  ignore_tls_errors: true
+  timeout: 5m
+  hostname: 
+  protocol_version: 1.8
 
 ```
 
