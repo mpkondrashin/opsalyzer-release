@@ -124,7 +124,12 @@ Following options are available:
 
 Sample of configuration file with all possible parameters:
 ```yaml
+version: 1.8
+unsupported:
+  folder: unsupported
+  limit: 100
 engine: analyzer
+only_cached: false
 dispense: 3/5
 vone:
   domain: api.eu.xdr.trendmicro.com
@@ -135,40 +140,35 @@ log:
   max_size: 100000
   keep: 3
 accept:
+  high_risk: false
   medium_risk: false
   low_risk: false
   error: true
   timeout: true
   big_file: true
-  high_risk: false
 connection_timeout: 30s
-unsupported:
-  folder: unsupported
-  limit: 100
-analyzer:
-  pull_interval: 10s
-  client_id: 12341234-1234-1234-1234-213412341234
-  product_name: 
-  source_id: 
-  source_name: 
-  hostname: 
-  api_key: 12341234-1234-1234-1234-213412341234
-  max_file_size: 25MB
-  protocol_version: 1.8
-  timeout: 5m
-  client_id_folder: .
-  address: https://1.2.3.4
-  ignore_tls_errors: true
-only_cached: false
-version: 1.8
 proxy:
-  authtype: NTLM
   username: michael
   password: Kr24^s_%12sa
   domain: company.local
   active: true
   address: 10.10.10.1
   port: 3128
+  authtype: NTLM
+analyzer:
+  source_id: 
+  source_name: 
+  hostname: 
+  protocol_version: 1.8
+  address: https://1.2.3.4
+  max_file_size: 25MB
+  ignore_tls_errors: true
+  pull_interval: 10s
+  product_name: 
+  api_key: 12341234-1234-1234-1234-213412341234
+  timeout: 5m
+  client_id: 12341234-1234-1234-1234-213412341234
+  client_id_folder: .
 
 ```
 
