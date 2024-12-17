@@ -124,29 +124,6 @@ Following options are available:
 
 Sample of configuration file with all possible parameters:
 ```yaml
-version: 1.8
-unsupported:
-  folder: unsupported
-  limit: 100
-engine: analyzer
-only_cached: false
-dispense: 3/5
-vone:
-  domain: api.eu.xdr.trendmicro.com
-  token: abcde...
-log:
-  level: 2
-  file: opsalyzer.log
-  max_size: 100000
-  keep: 3
-accept:
-  high_risk: false
-  medium_risk: false
-  low_risk: false
-  error: true
-  timeout: true
-  big_file: true
-connection_timeout: 30s
 proxy:
   username: michael
   password: Kr24^s_%12sa
@@ -155,20 +132,43 @@ proxy:
   address: 10.10.10.1
   port: 3128
   authtype: NTLM
+unsupported:
+  folder: unsupported
+  limit: 100
 analyzer:
-  source_id: 
-  source_name: 
-  hostname: 
-  protocol_version: 1.8
   address: https://1.2.3.4
+  api_key: 12341234-1234-1234-1234-213412341234
   max_file_size: 25MB
-  ignore_tls_errors: true
   pull_interval: 10s
   product_name: 
-  api_key: 12341234-1234-1234-1234-213412341234
+  protocol_version: 1.8
+  hostname: 
+  ignore_tls_errors: true
   timeout: 5m
   client_id: 12341234-1234-1234-1234-213412341234
   client_id_folder: .
+  source_id: 
+  source_name: 
+dispense: 3/5
+log:
+  level: 2
+  file: opsalyzer.log
+  max_size: 100000
+  keep: 3
+connection_timeout: 30s
+version: 1.8
+engine: analyzer
+only_cached: false
+vone:
+  token: abcde...
+  domain: api.eu.xdr.trendmicro.com
+accept:
+  error: true
+  timeout: true
+  big_file: true
+  high_risk: false
+  medium_risk: false
+  low_risk: false
 
 ```
 
