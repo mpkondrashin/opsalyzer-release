@@ -81,10 +81,11 @@ Following options are available:
 |String|engine<br/>--engine<br/>OPSAL_ENGINE|Scan engine: Analyzer, VisionOne|none|
 |String|analyzer.address<br/>--analyzer.address<br/>OPSAL_ANALYZER.ADDRESS|Analyzer URL (only if Analyzer used). Should be in form https://&lt;address&gt;|none|
 |String|analyzer.api_key<br/>--analyzer.api_key<br/>OPSAL_ANALYZER.API_KEY|Analyzer API key (only if Analyzer used)|none|
-|String|analyzer.max_file_size<br/>--analyzer.max_file_size<br/>OPSAL_ANALYZER.MAX_FILE_SIZE|maximum file size (should be less or equal to the limit of Analyzer/Vision One)|50MB|
+|String|analyzer.max_file_size<br/>--analyzer.max_file_size<br/>OPSAL_ANALYZER.MAX_FILE_SIZE|maximum file size (should be less or equal to the limit of Analyzer/Vision One)|60MB|
 |Boolean|analyzer.ignore_tls_errors<br/>--analyzer.ignore_tls_errors<br/>OPSAL_ANALYZER.IGNORE_TLS_ERRORS|ignore TLS errors. (only if Analyzer used)|false|
 |Duration|analyzer.timeout<br/>--analyzer.timeout<br/>OPSAL_ANALYZER.TIMEOUT|file analysis timeout|20m|
 |Boolean|only_cached<br/>--only_cached<br/>OPSAL_ONLY_CACHED|do not wait from analysis result. Only check Analyzer/Vision One cache|false|
+|String|dispense<br/>--dispense<br/>OPSAL_DISPENSE|Dispense file submission between multiple Opsalyzers. Format: &lt;submitter_number&gt;/&lt;submitters_count&gt;. Example: 3/5 means that 5 Opsalyzers will submit files to Analyzer at the same time. This particular is the third one. Should be used as CLI parameter in form --dispense 3/5|none|
 |Duration|analyzer.pull_interval<br/>--analyzer.pull_interval<br/>OPSAL_ANALYZER.PULL_INTERVAL|iterval to check file analysis result|1m|
 |String|analyzer.client_id<br/>--analyzer.client_id<br/>OPSAL_ANALYZER.CLIENT_ID|Client ID for Analyzer. It is generated automatically if missing. (only if Analyzer used). Use same client_id to make all Opsalyzers show up on the Analyzer console as a single submitter|none|
 |String|analyzer.client_id_folder<br/>--analyzer.client_id_folder<br/>OPSAL_ANALYZER.CLIENT_ID_FOLDER|Folder for Client ID file. It defaults to current folder for opsalyzer process. No need if client_id option is provided (only if Analyzer used)|none|
@@ -105,8 +106,8 @@ Following options are available:
 |Boolean|accept.error<br/>--accept.error<br/>OPSAL_ACCEPT.ERROR|files that resulted error during analysis are trated as non malicious|false|
 |Boolean|accept.timeout<br/>--accept.timeout<br/>OPSAL_ACCEPT.TIMEOUT|files that resulted timeout during analysis are trated as non malicious|false|
 |Boolean|accept.big_file<br/>--accept.big_file<br/>OPSAL_ACCEPT.BIG_FILE|file that are note analyzed due to their big size are trated as non malicious|true|
-|Duration|connection_timeout<br/>--connection_timeout<br/>OPSAL_CONNECTION_TIMEOUT|Connection timeout for Web API connections|15s|
-|String|--version<br/>OPSAL_VERSION|Force Web Services API version (only if Analyzer used)|2.0|
+|Duration|--connection_timeout<br/>OPSAL_CONNECTION_TIMEOUT|Connection timeout for Web API connections|15s|
+|String|version<br/>--version<br/>OPSAL_VERSION|Force Web Services API version (only if Analyzer used)|2.0|
 |String|config<br/>--config<br/>OPSAL_CONFIG|Provide alternative configuration file path|none|
 |Boolean|proxy.active<br/>--proxy.active<br/>OPSAL_PROXY.ACTIVE|use proxy|false|
 |String|proxy.address<br/>--proxy.address<br/>OPSAL_PROXY.ADDRESS|Proxy address|none|
@@ -123,41 +124,34 @@ Following options are available:
 
 Sample of configuration file with all possible parameters:
 ```yaml
-only_cached: false
-connection_timeout: 30s
-unsupported:
-  folder: unsupported
-  limit: 100
-analyzer:
-  pull_interval: 10s
-  client_id: 12341234-1234-1234-1234-213412341234
-  client_id_folder: .
-  product_name: 
-  source_name: 
-  address: https://1.2.3.4
-  ignore_tls_errors: true
-  timeout: 5m
-  hostname: 
-  protocol_version: 1.8
-  api_key: 12341234-1234-1234-1234-213412341234
-  max_file_size: 25MB
-  source_id: 
+dispense: 3/5
 vone:
   domain: api.eu.xdr.trendmicro.com
   token: abcde...
-log:
-  level: 2
-  file: opsalyzer.log
-  max_size: 100000
-  keep: 3
 accept:
-  low_risk: false
-  error: true
   timeout: true
   big_file: true
   high_risk: false
   medium_risk: false
+  low_risk: false
+  error: true
+connection_timeout: 30s
 version: 1.8
+engine: analyzer
+analyzer:
+  ignore_tls_errors: true
+  product_name: 
+  hostname: 
+  timeout: 5m
+  pull_interval: 10s
+  client_id: 12341234-1234-1234-1234-213412341234
+  client_id_folder: .
+  source_id: 
+  address: https://1.2.3.4
+  api_key: 12341234-1234-1234-1234-213412341234
+  max_file_size: 25MB
+  source_name: 
+  protocol_version: 1.8
 proxy:
   active: true
   address: 10.10.10.1
@@ -166,7 +160,15 @@ proxy:
   username: michael
   password: Kr24^s_%12sa
   domain: company.local
-engine: analyzer
+unsupported:
+  folder: unsupported
+  limit: 100
+only_cached: false
+log:
+  level: 2
+  file: opsalyzer.log
+  max_size: 100000
+  keep: 3
 
 ```
 
