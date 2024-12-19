@@ -97,7 +97,7 @@ Following options are available:
 |String|vone.domain<br/>--vone.domain<br/>OPSAL_VONE.DOMAIN|Vision One address (only if Vision One Sandbox is used)|none|
 |String|vone.token<br/>--vone.token<br/>OPSAL_VONE.TOKEN|Vision One token (only if Vision One Sandbox is used)|none|
 |Integer|log.level<br/>--log.level<br/>OPSAL_LOG.LEVEL|Log level 0-none, 1-warnings, 2-info, 3-debug|0|
-|String|log.file<br/>--log.file<br/>OPSAL_LOG.FILE|filename to write log (absolute path or relative from folder where opsalyzer executable reside)|opsalyzer.log|
+|String|log.file<br/>--log.file<br/>OPSAL_LOG.FILE|filename to write log (absolute path or relative from folder where opsalyzer executable reside)|log/opsalyzer.log|
 |Integer|log.max_size<br/>--log.max_size<br/>OPSAL_LOG.MAX_SIZE|filename to write log (absolute path or relative from folder where opsalyzer executable reside)|100000000|
 |Integer|log.keep<br/>--log.keep<br/>OPSAL_LOG.KEEP|filename to write log (absolute path or relative from folder where opsalyzer executable reside)|10|
 |Boolean|accept.high_risk<br/>--accept.high_risk<br/>OPSAL_ACCEPT.HIGH_RISK|files detected as high risk are trated as non malicious|false|
@@ -124,44 +124,6 @@ Following options are available:
 
 Sample of configuration file with all possible parameters:
 ```yaml
-log:
-  level: 2
-  file: opsalyzer.log
-  max_size: 100000
-  keep: 3
-connection_timeout: 30s
-proxy:
-  authtype: NTLM
-  username: michael
-  password: Kr24^s_%12sa
-  domain: company.local
-  active: true
-  address: 10.10.10.1
-  port: 3128
-unsupported:
-  folder: unsupported
-  limit: 100
-engine: analyzer
-analyzer:
-  ignore_tls_errors: true
-  client_id_folder: .
-  protocol_version: 1.8
-  client_id: 12341234-1234-1234-1234-213412341234
-  product_name: 
-  source_id: 
-  address: https://1.2.3.4
-  api_key: 12341234-1234-1234-1234-213412341234
-  max_file_size: 25MB
-  timeout: 5m
-  pull_interval: 10s
-  source_name: 
-  hostname: 
-dispense: 3/5
-version: 1.8
-only_cached: false
-vone:
-  token: abcde...
-  domain: api.eu.xdr.trendmicro.com
 accept:
   error: true
   timeout: true
@@ -169,6 +131,44 @@ accept:
   high_risk: false
   medium_risk: false
   low_risk: false
+connection_timeout: 30s
+proxy:
+  port: 3128
+  authtype: NTLM
+  username: michael
+  password: Kr24^s_%12sa
+  domain: company.local
+  active: true
+  address: 10.10.10.1
+engine: analyzer
+analyzer:
+  max_file_size: 25MB
+  ignore_tls_errors: true
+  client_id: 12341234-1234-1234-1234-213412341234
+  product_name: 
+  source_name: 
+  hostname: 
+  address: https://1.2.3.4
+  api_key: 12341234-1234-1234-1234-213412341234
+  timeout: 5m
+  pull_interval: 10s
+  client_id_folder: .
+  source_id: 
+  protocol_version: 1.8
+only_cached: false
+dispense: 3/5
+log:
+  level: 2
+  file: opsalyzer.log
+  max_size: 100000
+  keep: 3
+vone:
+  domain: api.eu.xdr.trendmicro.com
+  token: abcde...
+version: 1.8
+unsupported:
+  folder: unsupported
+  limit: 100
 
 ```
 
