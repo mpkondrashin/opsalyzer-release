@@ -86,7 +86,7 @@ Following options are available:
 |Duration|analyzer.timeout<br/>--analyzer.timeout<br/>OPSAL_ANALYZER.TIMEOUT|file analysis timeout|20m|
 |Boolean|only_cached<br/>--only_cached<br/>OPSAL_ONLY_CACHED|do not wait from analysis result. Only check Analyzer/Vision One cache|false|
 |String|dispense<br/>--dispense<br/>OPSAL_DISPENSE|Dispense file submission between multiple Opsalyzers. Format: &lt;submitter_number&gt;/&lt;submitters_count&gt;. Example: 3/5 means that 5 Opsalyzers will submit files to Analyzer at the same time. This particular is the third one. Should be used as CLI parameter in form --dispense 3/5|none|
-|Duration|analyzer.pull_interval<br/>--analyzer.pull_interval<br/>OPSAL_ANALYZER.PULL_INTERVAL|iterval to check file analysis result|1m|
+|Duration|analyzer.pull_interval<br/>--analyzer.pull_interval<br/>OPSAL_ANALYZER.PULL_INTERVAL|interval to check file analysis result|1m|
 |String|analyzer.client_id<br/>--analyzer.client_id<br/>OPSAL_ANALYZER.CLIENT_ID|Client ID for Analyzer. It is generated automatically if missing. (only if Analyzer used). Use same client_id to make all Opsalyzers show up on the Analyzer console as a single submitter|none|
 |String|analyzer.client_id_folder<br/>--analyzer.client_id_folder<br/>OPSAL_ANALYZER.CLIENT_ID_FOLDER|Folder for Client ID file. It defaults to current folder for opsalyzer process. No need if client_id option is provided (only if Analyzer used)|none|
 |String|analyzer.product_name<br/>--analyzer.product_name<br/>OPSAL_ANALYZER.PRODUCT_NAME|DDAn Product name (do not change!)|Opsalyzer|
@@ -124,51 +124,51 @@ Following options are available:
 
 Sample of configuration file with all possible parameters:
 ```yaml
+dispense: 3/5
+connection_timeout: 30s
 proxy:
+  active: true
   address: 10.10.10.1
   port: 3128
   authtype: NTLM
   username: michael
   password: Kr24^s_%12sa
   domain: company.local
-  active: true
+engine: analyzer
+analyzer:
+  max_file_size: 25MB
+  pull_interval: 10s
+  source_id: 
+  hostname: 
+  api_key: 12341234-1234-1234-1234-213412341234
+  ignore_tls_errors: true
+  timeout: 5m
+  client_id: 12341234-1234-1234-1234-213412341234
+  client_id_folder: .
+  product_name: 
+  source_name: 
+  protocol_version: 1.8
+  address: https://1.2.3.4
 only_cached: false
+vone:
+  domain: api.eu.xdr.trendmicro.com
+  token: abcde...
 log:
   level: 2
   file: opsalyzer.log
   max_size: 100000
   keep: 3
-version: 1.8
-vone:
-  domain: api.eu.xdr.trendmicro.com
-  token: abcde...
 accept:
-  low_risk: false
-  error: true
-  timeout: true
   big_file: true
   high_risk: false
   medium_risk: false
-connection_timeout: 30s
+  low_risk: false
+  error: true
+  timeout: true
+version: 1.8
 unsupported:
   folder: unsupported
   limit: 100
-engine: analyzer
-analyzer:
-  pull_interval: 10s
-  client_id: 12341234-1234-1234-1234-213412341234
-  client_id_folder: .
-  hostname: 
-  timeout: 5m
-  api_key: 12341234-1234-1234-1234-213412341234
-  max_file_size: 25MB
-  ignore_tls_errors: true
-  product_name: 
-  source_id: 
-  source_name: 
-  protocol_version: 1.8
-  address: https://1.2.3.4
-dispense: 3/5
 
 ```
 
