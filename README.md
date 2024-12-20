@@ -124,51 +124,51 @@ Following options are available:
 
 Sample of configuration file with all possible parameters:
 ```yaml
-analyzer:
-  pull_interval: 10s
-  product_name: 
-  source_name: 
-  hostname: 
-  protocol_version: 1.8
-  source_id: 
-  address: https://1.2.3.4
-  api_key: 12341234-1234-1234-1234-213412341234
-  max_file_size: 25MB
-  ignore_tls_errors: true
-  timeout: 5m
-  client_id: 12341234-1234-1234-1234-213412341234
-  client_id_folder: .
-dispense: 3/5
-vone:
-  domain: api.eu.xdr.trendmicro.com
-  token: abcde...
-log:
-  file: opsalyzer.log
-  max_size: 100000
-  keep: 3
-  level: 2
-unsupported:
-  folder: unsupported
-  limit: 100
 engine: analyzer
-only_cached: false
 accept:
-  high_risk: false
-  medium_risk: false
   low_risk: false
   error: true
   timeout: true
   big_file: true
-connection_timeout: 30s
+  high_risk: false
+  medium_risk: false
 version: 1.0
+log:
+  level: 2
+  file: opsalyzer.log
+  max_size: 100000
+  keep: 3
+connection_timeout: 30s
 proxy:
+  authtype: NTLM
   username: michael
   password: Kr24^s_%12sa
   domain: company.local
   active: true
   address: 10.10.10.1
   port: 3128
-  authtype: NTLM
+unsupported:
+  folder: unsupported
+  limit: 100
+analyzer:
+  ignore_tls_errors: true
+  timeout: 5m
+  pull_interval: 10s
+  source_name: 
+  api_key: 12341234-1234-1234-1234-213412341234
+  max_file_size: 25MB
+  client_id: 12341234-1234-1234-1234-213412341234
+  client_id_folder: .
+  product_name: 
+  source_id: 
+  hostname: 
+  protocol_version: 1.8
+  address: https://1.2.3.4
+only_cached: false
+dispense: 3/5
+vone:
+  token: abcde...
+  domain: api.eu.xdr.trendmicro.com
 
 ```
 
