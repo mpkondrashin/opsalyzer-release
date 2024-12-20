@@ -107,7 +107,7 @@ Following options are available:
 |Boolean|accept.timeout<br/>--accept.timeout<br/>OPSAL_ACCEPT.TIMEOUT|files that resulted timeout during analysis are trated as non malicious|false|
 |Boolean|accept.big_file<br/>--accept.big_file<br/>OPSAL_ACCEPT.BIG_FILE|file that are note analyzed due to their big size are trated as non malicious|true|
 |Duration|--connection_timeout<br/>OPSAL_CONNECTION_TIMEOUT|Connection timeout for Web API connections|15s|
-|String|version<br/>--version<br/>OPSAL_VERSION|Force Web Services API version (only if Analyzer used)|2.0|
+|String|version<br/>--version<br/>OPSAL_VERSION|Configuration file version|none|
 |String|config<br/>--config<br/>OPSAL_CONFIG|Provide alternative configuration file path|none|
 |Boolean|proxy.active<br/>--proxy.active<br/>OPSAL_PROXY.ACTIVE|use proxy|false|
 |String|proxy.address<br/>--proxy.address<br/>OPSAL_PROXY.ADDRESS|Proxy address|none|
@@ -124,51 +124,51 @@ Following options are available:
 
 Sample of configuration file with all possible parameters:
 ```yaml
-engine: analyzer
 analyzer:
   pull_interval: 10s
-  client_id_folder: .
-  source_id: 
-  hostname: 
-  max_file_size: 25MB
-  timeout: 5m
-  ignore_tls_errors: true
-  client_id: 12341234-1234-1234-1234-213412341234
   product_name: 
   source_name: 
+  hostname: 
   protocol_version: 1.8
+  source_id: 
   address: https://1.2.3.4
   api_key: 12341234-1234-1234-1234-213412341234
+  max_file_size: 25MB
+  ignore_tls_errors: true
+  timeout: 5m
+  client_id: 12341234-1234-1234-1234-213412341234
+  client_id_folder: .
 dispense: 3/5
+vone:
+  domain: api.eu.xdr.trendmicro.com
+  token: abcde...
+log:
+  file: opsalyzer.log
+  max_size: 100000
+  keep: 3
+  level: 2
+unsupported:
+  folder: unsupported
+  limit: 100
+engine: analyzer
+only_cached: false
+accept:
+  high_risk: false
+  medium_risk: false
+  low_risk: false
+  error: true
+  timeout: true
+  big_file: true
 connection_timeout: 30s
-version: 1.8
+version: 1.0
 proxy:
-  port: 3128
-  authtype: NTLM
   username: michael
   password: Kr24^s_%12sa
   domain: company.local
   active: true
   address: 10.10.10.1
-unsupported:
-  folder: unsupported
-  limit: 100
-only_cached: false
-vone:
-  domain: api.eu.xdr.trendmicro.com
-  token: abcde...
-log:
-  level: 2
-  file: opsalyzer.log
-  max_size: 100000
-  keep: 3
-accept:
-  timeout: true
-  big_file: true
-  high_risk: false
-  medium_risk: false
-  low_risk: false
-  error: true
+  port: 3128
+  authtype: NTLM
 
 ```
 
